@@ -280,4 +280,32 @@
     footer {
       grid-template-columns: 1fr;
     }
+
+    .footer-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+      
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      
+        color: var(--wine);
+        text-decoration: none;
+      
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+      
+      .social-icon svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
+      
+      .social-icon:hover {
+        opacity: 0.65;
+        transform: translateY(-2px);
+      }
   }
