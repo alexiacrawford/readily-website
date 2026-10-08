@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,31 +6,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
   <title>Reset Password | Readily</title>
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/reset-password/reset.css" />
 </head>
+
 <body>
-  <header class="nav"><a href="/" class="logo">Readily</a><nav><a href="/support/">Support</a></nav></header>
+  <header class="nav">
+    <a href="/" class="logo">Readily</a>
+    <nav>
+      <a href="/support/">Support</a>
+    </nav>
+  </header>
+
   <main class="reset-main">
     <section class="reset-card" aria-labelledby="reset-title">
+
       <p class="eyebrow">YOUR READILY ACCOUNT</p>
+
       <h1 id="reset-title">Set a new password.</h1>
-      <p class="reset-description">Choose a new password for your Readily account. Then return to the app to sign in.</p>
-      <p id="status" role="status" aria-live="polite">Verifying your reset link…</p>
+
+      <p class="reset-description">
+        Choose a new password for your Readily account.
+        Then return to the app to sign in.
+      </p>
+
+      <p id="status" role="status" aria-live="polite">
+        Verifying your reset link…
+      </p>
+
       <form id="reset-form" hidden>
+
         <label for="password">New password</label>
-        <input id="password" type="password" autocomplete="new-password" minlength="10" required />
-        <label for="confirm-password">Confirm new password</label>
-        <input id="confirm-password" type="password" autocomplete="new-password" minlength="10" required />
-        <p class="password-hint">At least 10 characters, including uppercase and lowercase letters, a number, and a special character.</p>
-        <button type="submit" id="submit-button">Save new password</button>
+
+        <div class="password-field">
+          <input
+            id="password"
+            type="password"
+            autocomplete="new-password"
+            minlength="10"
+            required
+          />
+
+          <button
+            type="button"
+            class="toggle-password"
+            data-target="password"
+            aria-label="Show new password"
+            aria-pressed="false"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+              <circle cx="12" cy="12" r="3" />
+              <path class="eye-slash" d="M3 3l18 18" />
+            </svg>
+          </button>
+        </div>
+
+        <label for="confirm-password">
+          Confirm new password
+        </label>
+
+        <div class="password-field">
+          <input
+            id="confirm-password"
+            type="password"
+            autocomplete="new-password"
+            minlength="10"
+            required
+          />
+
+          <button
+            type="button"
+            class="toggle-password"
+            data-target="confirm-password"
+            aria-label="Show confirmed password"
+            aria-pressed="false"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+              <circle cx="12" cy="12" r="3" />
+              <path class="eye-slash" d="M3 3l18 18" />
+            </svg>
+          </button>
+        </div>
+
+        <p class="password-hint">
+          At least 10 characters, including uppercase and lowercase
+          letters, a number, and a special character.
+        </p>
+
+        <button type="submit" id="submit-button">
+          Save new password
+        </button>
+
       </form>
-      <p class="reset-help">Need another link? Open Readily and select <strong>Forgot Password?</strong> on the sign-in screen.</p>
+
+      <p class="reset-help">
+        Need another link? Open Readily and select
+        <strong>Forgot Password?</strong> on the sign in screen.
+      </p>
+
     </section>
   </main>
+
   <script type="module" src="/reset-password/reset.js"></script>
+
+  <script>
+    document.querySelectorAll('.toggle-password').forEach((button) => {
+      button.addEventListener('click', () => {
+        const input = document.getElementById(button.dataset.target);
+        const showing = input.type === 'password';
+
+        input.type = showing ? 'text' : 'password';
+
+        button.classList.toggle('is-visible', showing);
+        button.setAttribute('aria-pressed', String(showing));
+        button.setAttribute(
+          'aria-label',
+          showing ? 'Hide password' : 'Show password'
+        );
+      });
+    });
+  </script>
 </body>
 </html>

@@ -13,3 +13,62 @@
 #submit-button:disabled{opacity:.6;cursor:wait}
 .reset-help{font-size:14px;margin-top:28px}
 @media(max-width:600px){.reset-card{padding:32px 24px}}
+
+
+/* Password visibility toggle */
+
+#reset-form .password-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 52px;
+  }
+  
+  .password-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 52px;
+  }
+  
+  .password-field .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+  
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #593a42;
+    cursor: pointer;
+  }
+  
+  .password-field .toggle-password:hover {
+    background: rgba(89, 58, 66, 0.08);
+  }
+  
+  .password-field .toggle-password:focus-visible {
+    outline: 2px solid #593a42;
+    outline-offset: 2px;
+  }
+  
+  .toggle-password svg {
+    width: 21px;
+    height: 21px;
+  }
+  
+  .toggle-password .eye-slash {
+    display: none;
+  }
+  
+  .toggle-password.is-visible .eye-slash {
+    display: block;
+  }
+  
